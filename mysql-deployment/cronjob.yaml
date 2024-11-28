@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mysql-pod-kill
+  namespace: default
+spec:
+  schedule: "*/2 * * * *"  # Run every minute
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: mysql-pod-kill
+          containers:
+            - name: mysql-pod-kill
+              image: bitnami/kubectl:latest
+              command: ["kubectl", "delete", "pods", "mysql-0"]
+          restartPolicy: OnFailure
