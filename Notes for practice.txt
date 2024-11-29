@@ -1,0 +1,62 @@
+Experiment01:
+
+install apply
+below command will deploy the application on cluster
+> kubectl apply -f petclinic-deploy-lb.yaml
+
+check now pods are running or not?
+
+> kubectl get pods
+
+also check the ips/svc to get the IP details.
+
+> kubectl get svc
+
+
+kubectl apply -f prometheus -n monitoring
+
+
+kubectl apply -f grafana -n monitoring
+
+Dashboard id: 1471
+
+
+cassowary run -u http://34.69.27.55/ -c 1000 -n 1000 --duration 50
+
+kubectl create namespace monitoring
+
+
+http://34.27.225.72/
+http://34.31.243.213:3000/
+http://34.122.38.154:80/
+
+
+kubectl -n chaos-mesh port-forward chaos-dashboard-c8cfcb765-x4dpq 8889:2333 &
+
+
+Experiment: 5: 29th Nov 2024
+
+curl -sSL https://mirrors.chaos-mesh.org/latest/install.sh | bash
+
+
+
+
+kubectl port-forward -n chaos-mesh chaos-dashboard-c8cfcb765-5ctz2  8890:2333 &
+
+https://github.com/pratikmehta0206/chaos-engineering-accion
+
+mysql -u root -p
+
+create database chaos;
+
+use chaos; 
+
+create table experiment1(Exp_no INTEGER PRIMARY KEY, Trainer_name TEXT NOT NULL);
+
+insert into experiment1 values(‘001','Pratik');
+
+insert into experiment1 values('002','Dina');
+
+use chaos;
+
+select * FROM experiment1;
