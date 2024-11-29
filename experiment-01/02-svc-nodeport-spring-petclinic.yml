@@ -1,23 +1,3 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: svc-nodeport-spring-petclinic
-spec:
-  type: LoadBalancer
-  ports:
-    - port: 80
-      # By default and for convenience, the `targetPort` is set to
-      # the same value as the `port` field.
-      protocol: TCP
-      targetPort: 8080 # Container Port
-      # Optional field
-      # By default and for convenience, the Kubernetes control plane
-      # will allocate a port from a range (default: 30000-32767)
-  selector:
-    project: spring-pod-demo
-# Reference: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
----
-### Create Deployments
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -42,14 +22,20 @@ spec:
     spec:
       containers:
         - name: spring-petclinic
-          image: dockerbikram/spring-petclinic:3.2.0
+          image: springcommunity/spring-framework-petclinic:5.3.0
           imagePullPolicy: Always
-          resources:
-            requests:
-              memory: "15Mi"
-              cpu: "5m"
-            limits:
-              memory: "20Mi"
-              cpu: "5.5m"
           ports:
             - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloud-lb
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80 
+    targetPort: 8080 
+  selector:
+    project: spring-pod-demo
