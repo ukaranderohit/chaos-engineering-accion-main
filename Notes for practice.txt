@@ -3,7 +3,7 @@ Experiment01:
 install apply
 below command will deploy the application on cluster
 > kubectl apply -f petclinic-deploy-lb.yaml
-
+ 
 check now pods are running or not?
 
 > kubectl get pods
